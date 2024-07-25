@@ -2,17 +2,24 @@ package Sea_battle;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Game {
     private static final int GRID_SIZE = 7;
     private static final int SHIP_SIZE = 3;
     private static final int SHIP_COUNT = 3;
+    private static final List<String> name_ship = Arrays.asList("Drakkar", "Titanic", "Santa Maria");
 
     public static void main(String[] args) {
         new Game().start();
     }
 
     void start() {
+        // Shuffle the ship names at the start of the game
+        Collections.shuffle(name_ship);
+
         int[][] grid = initializeGrid();
         placeShips(grid);
         playGame(grid);
@@ -115,7 +122,7 @@ public class Game {
                 grid[x][y] = -1;
                 hits++;
                 if (hits % 3 == 0) {
-                    System.out.println("Kill " + hits / 3 + " Ship!!!");
+                    System.out.println("Kill " + hits / 3 + " Ship: " + name_ship.get(hits / 3 - 1));
                 } else {
                     System.out.println("Hit!");
                 }
