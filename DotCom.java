@@ -1,4 +1,4 @@
-package Naval_battle;
+package Sea_battle;
 
 public class DotCom {
     public static void main(String[] args) {
