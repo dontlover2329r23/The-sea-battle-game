@@ -84,28 +84,45 @@ public class Game {
         int hits = 0;
 
         System.out.println("Let's start the game");
-         printGrid(grid);   //For testing game
+        printGrid(grid);   // For testing game
 
-        while (hits < SHIP_COUNT*SHIP_SIZE) {
-            System.out.println("Please enter 2 values between 0 and 6 (x y): ");
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
+        while (hits < SHIP_COUNT * SHIP_SIZE) {
+            int x = -1, y = -1;
+            boolean validInput = false;
+            while (!validInput) {
+                System.out.println("Please enter 2 values between 0 and 6 (x y): ");
+                if (scanner.hasNextInt()) {
+                    x = scanner.nextInt();
+                    if (scanner.hasNextInt()) {
+                        y = scanner.nextInt();
+                        if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
+                            validInput = true;
+                        } else {
+                            System.out.println("Values must be between 0 and 6. Try again.");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter integers.");
+                        scanner.next();  // Clear invalid input
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter integers.");
+                    scanner.next();  // Clear invalid input
+                }
+            }
 
             if (grid[x][y] == 1) {
-
                 score += points;
                 grid[x][y] = -1;
                 hits++;
-                if (hits%3==0){
-                    System.out.println("Kill "+hits/3+" Ship!!!");
-                }else{
+                if (hits % 3 == 0) {
+                    System.out.println("Kill " + hits / 3 + " Ship!!!");
+                } else {
                     System.out.println("Hit!");
                 }
-            } else if(grid[x][y]==0)  {
-                grid[x][y]-=1;
+            } else if (grid[x][y] == 0) {
+                grid[x][y] = -1;
                 System.out.println("Miss!");
-            }
-            else{
+            } else {
                 System.out.println("You've shot at this place before");
             }
             points--;
