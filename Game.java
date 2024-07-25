@@ -84,7 +84,7 @@ public class Game {
         int hits = 0;
 
         System.out.println("Let's start the game");
-        // printGrid(grid);   For testing game
+         printGrid(grid);   //For testing game
 
         while (hits < SHIP_COUNT*SHIP_SIZE) {
             System.out.println("Please enter 2 values between 0 and 6 (x y): ");
@@ -94,15 +94,19 @@ public class Game {
             if (grid[x][y] == 1) {
 
                 score += points;
-                grid[x][y] = 0;
+                grid[x][y] = -1;
                 hits++;
                 if (hits%3==0){
-                    System.out.println("Sink "+hits/3+" Ship!!!");
+                    System.out.println("Kill "+hits/3+" Ship!!!");
                 }else{
                     System.out.println("Hit!");
                 }
-            } else {
+            } else if(grid[x][y]==0)  {
+                grid[x][y]-=1;
                 System.out.println("Miss!");
+            }
+            else{
+                System.out.println("You've shot at this place before");
             }
             points--;
         }
