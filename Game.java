@@ -97,7 +97,7 @@ public class Game {
                 grid[x][y] = 0;
                 hits++;
                 if (hits%3==0){
-                    System.out.println("Kill "+hits/3+" Ship!!!");
+                    System.out.println("Sink "+hits/3+" Ship!!!");
                 }else{
                     System.out.println("Hit!");
                 }
