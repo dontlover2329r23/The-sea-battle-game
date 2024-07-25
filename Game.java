@@ -1,4 +1,4 @@
-package Naval_battle;
+package Sea_battle;
 
 import java.util.Random;
 import java.util.Scanner;
