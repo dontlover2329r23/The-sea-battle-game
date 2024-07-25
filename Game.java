@@ -84,7 +84,7 @@ public class Game {
         int hits = 0;
 
         System.out.println("Let's start the game");
-        printGrid(grid);   // For testing game
+        //printGrid(grid);    For testing game
 
         while (hits < SHIP_COUNT * SHIP_SIZE) {
             int x = -1, y = -1;
